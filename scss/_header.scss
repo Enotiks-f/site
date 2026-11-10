@@ -1,0 +1,81 @@
+@use 'variables' as *;
+
+.header {
+    display: flex;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        gap: 24px;
+        border-bottom: 1px solid rgba($color-white, 0.3);
+    }
+
+    &__logo {
+        font-size: 36px;
+        font-weight: 600;
+        color: $color-white;
+        white-space: nowrap;
+        transition: opacity $transition-time;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__search-wrap {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__search {
+        width: 100%;
+        max-width: 288px;
+        padding: 10px 20px;
+        border: 1px solid $color-white;
+        border-radius: 20px;
+        background: transparent;
+        color: $color-white;
+        font-size: 16px;
+        transition: background-color $transition-time;
+
+        &:hover,
+        &:focus {
+            background-color: rgba($color-white, 0.15);
+            outline: none;
+        }
+
+        &::placeholder {
+            color: $color-white;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    &__link {
+        color: $color-white;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        transition: opacity $transition-time;
+
+        &:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+    }
+}
+
+.header__icon {
+    display: none;
+    width: 24px;
+    height: 24px;
+}

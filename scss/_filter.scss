@@ -1,0 +1,340 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Скрытый, но доступный с клавиатуры input (вместо display: none)
+@mixin visually-hidden-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+}
+
+// Рамка фокуса для кастомных радио и чекбоксов
+@mixin focus-ring {
+    outline: 2px solid $color-black;
+    outline-offset: 2px;
+}
+
+// Блок фильтра. Он position: relative, поэтому форма (position: absolute)
+// позиционируется относительно кнопки «Фильтрация». Форма всегда открыта.
+.filter {
+    position: relative;
+    display: inline-block;
+
+    &__button {
+        @include pill-select;
+        display: flex;
+        align-items: center;
+        width: 182px;
+        height: 40px;
+        list-style: none;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+
+    // Форма: всегда открыта под кнопкой, правый край совпадает с кнопкой
+    &__form {
+        position: absolute;
+        top: calc(100% + 14px);
+        right: 0;
+        z-index: 10;
+        box-sizing: border-box;
+        width: 525.5px;
+        padding: 40px;
+        background: $color-white;
+        box-shadow: 0 4px 67px -12px rgba($color-black, 0.32);
+    }
+
+    &__columns {
+        display: flex;
+        gap: 65px;
+    }
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    &__group {
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    &__title {
+        padding: 0;
+        margin-bottom: 14px;
+        color: rgba(5, 5, 5, 1);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: left;
+    }
+
+    &__options {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    &__option {
+        position: relative;
+        color: $color-black;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        text-align: left;
+    }
+
+    // Радиокнопки «Сроки доставки»
+    &__radio {
+        @include visually-hidden-input;
+
+        &:checked + .filter__radio-label::after {
+            content: '✓';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            font-size: 11px;
+            font-weight: bold;
+            color: $color-black;
+        }
+
+        &:focus-visible + .filter__radio-label::before {
+            @include focus-ring;
+        }
+    }
+
+    &__radio-label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 20px;
+        padding-left: 32px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            width: 18px;
+            height: 18px;
+            border: 1px solid $color-black;
+            border-radius: 50%;
+            background-color: $color-white;
+        }
+    }
+
+    // Чекбоксы «Тип комнаты»
+    &__checkbox {
+        @include visually-hidden-input;
+
+        &:checked + .filter__checkbox-label::after {
+            content: '✓';
+            position: absolute;
+            left: 5px;
+            top: -2px;
+            font-size: 12px;
+            color: $color-black;
+        }
+
+        &:focus-visible + .filter__checkbox-label::before {
+            @include focus-ring;
+        }
+    }
+
+    &__checkbox-label {
+        position: relative;
+        padding-left: 29px;
+        line-height: 17px;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: -1px;
+            box-sizing: border-box;
+            width: 15px;
+            height: 15px;
+            border: 1px solid $color-black;
+            background-color: $color-white;
+        }
+    }
+
+    // Ползунок цены: два input range друг на друге
+    &__range {
+        width: 189px;
+    }
+
+    &__range-text {
+        display: block;
+        margin-bottom: 14px;
+        color: $color-black;
+        font-size: 16px;
+    }
+
+    &__slider {
+        position: relative;
+        height: 8px;
+    }
+
+    &__range-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 189px;
+        margin: 0;
+        background: transparent;
+        appearance: none;
+        pointer-events: none;
+
+        // Chrome, Safari: линия и бегунок
+        &::-webkit-slider-runnable-track {
+            height: 1px;
+            background-color: $color-black;
+        }
+
+        &::-webkit-slider-thumb {
+            appearance: none;
+            position: relative;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $color-black;
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        // Firefox: линия и бегунок
+        &::-moz-range-track {
+            height: 1px;
+            background-color: $color-black;
+        }
+
+        &::-moz-range-thumb {
+            position: relative;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border: none;
+            border-radius: 50%;
+            background-color: $color-black;
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        &:focus-visible {
+            @include focus-ring;
+        }
+    }
+
+    // Цвета: сетка 7 колонок по 15px
+    &__colors {
+        display: grid;
+        grid-template-columns: repeat(7, 15px);
+        gap: 14px;
+        width: 189px;
+    }
+
+    &__color {
+        position: relative;
+        width: 15px;
+        height: 15px;
+    }
+
+    &__color-input {
+        @include visually-hidden-input;
+
+        &:checked + .filter__color-label::after {
+            content: '✓';
+            position: absolute;
+            left: 3px;
+            top: -1px;
+            font-size: 10px;
+            color: $color-black;
+        }
+
+        &:focus-visible + .filter__color-label {
+            @include focus-ring;
+        }
+    }
+
+    &__color-label {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            width: 15px;
+            height: 15px;
+            border: 1px solid $color-black;
+        }
+    }
+
+    // Цвет каждого квадрата берётся из карты $filter-colors
+    @each $name, $value in $filter-colors {
+        &__color-label--#{$name}::before {
+            background-color: $value;
+        }
+    }
+
+    // На чёрном квадрате галочка белая
+    &__color-input:checked + &__color-label--black::after {
+        color: $color-white;
+    }
+
+    // Текст для скринридеров внутри цветной метки
+    &__visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    // Кнопка «Применить»
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 36px;
+    }
+
+    &__submit {
+        box-sizing: border-box;
+        width: 190px;
+        height: 40px;
+        border: 1px solid $color-black;
+        border-radius: 50px;
+        background-color: $color-white;
+        color: $color-black;
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: background-color $transition-time, color $transition-time;
+
+        &:hover {
+            background-color: $color-black;
+            color: $color-white;
+        }
+    }
+}

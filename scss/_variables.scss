@@ -1,0 +1,40 @@
+// Цвета
+$color-white: #fff;
+$color-black: #000;
+$color-gray: #888;
+$color-gray-light: #c4c4c4;
+$color-footer-bg: #f7f6f6;
+$color-price: #050505;
+$color-line: #e5e5e5;
+$color-field-bg: #f4f4f4;
+
+$transition-time: 0.3s;
+
+// Шрифт
+$font-main: "Montserrat", sans-serif;
+
+// Сетка
+$grid-columns: 12;
+$grid-gap: 32px;
+
+// Точки перелома для адаптива
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 767px;
+
+// Палитра цветов в фильтре
+$filter-colors: (
+    "white": #fff,
+    "black": #000,
+    "gray": gray,
+    "red": red,
+    "orangered": orangered,
+    "yellow": yellow,
+    "green": #00bf2a,
+    "turquoise": #1ccc97,
+    "sky": #009fe3,
+    "blue": blue,
+    "purple": #6710d6,
+    "violet": #9d0db5,
+    "lilac": #d89aff,
+    "pink": #ff65a6
+);

@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+// Заголовок секции (Мебель для..., Специальные предложения, Каталог)
+@mixin section-title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 59px;
+    color: $color-black;
+    margin-bottom: 32px;
+}
+
+@mixin pill-select {
+    padding: 0 44px 0 22px;
+    border: 1px solid $color-gray-light;
+    border-radius: 20px;
+    background: $color-white url(../img/icon-arrow.svg) right 22px center / 12px 8px no-repeat;
+    color: $color-black;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color $transition-time;
+
+    &:hover {
+        border-color: $color-black;
+    }
+}

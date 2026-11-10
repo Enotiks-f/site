@@ -1,0 +1,368 @@
+@use 'variables' as *;
+
+@media (max-width: $breakpoint-tablet) {
+    .header {
+        &__inner {
+            padding-top: 14px;
+            padding-bottom: 14px;
+            border-bottom: none;
+            background: linear-gradient(rgba($color-white, 0.3), rgba($color-white, 0.3)) center bottom / calc(100% - 40px) 1px no-repeat;
+        }
+
+        &__logo {
+            font-size: 32px;
+        }
+    }
+
+    .top {
+        &--home {
+            min-height: 680px;
+            background-size: 100% 158%;
+            background-position: 0 20%;
+        }
+
+        &--page {
+            min-height: 366px;
+            background-size: 100% 158%;
+            background-position: 0 20%;
+        }
+
+        // Индивидуальное кадрирование фона для планшетов
+        &--catalog {
+            background-size: 160% 190%;
+            background-position: 55% 40%;
+        }
+
+        &--cart {
+            background-size: 190% 160%;
+            background-position: 50% 40%;
+        }
+
+        &__content--page {
+            padding-top: 120px;
+        }
+
+        &__title {
+            font-size: 60px;
+            line-height: 64px;
+        }
+
+        &__text {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .category-card {
+        height: 240px;
+
+        &__title {
+            font-size: 28px;
+        }
+    }
+
+    .offers__item,
+    .catalog__item {
+        width: calc((100% - #{$grid-gap}) / 2);
+    }
+
+    .product {
+        &__image {
+            height: 230px;
+        }
+
+        &__title,
+        &__price,
+        &__old-price {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    }
+
+    .filter {
+        position: static;
+
+        &__form {
+            max-width: 100%;
+        }
+    }
+
+    .cart {
+        &__inner {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        &__image {
+            width: 156px;
+            height: 156px;
+        }
+
+        &__name {
+            font-size: 22px;
+            line-height: 27px;
+        }
+    }
+
+    .order {
+        max-width: 378px;
+    }
+
+    .footer__logo {
+        display: none;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .center {
+        max-width: 560px;
+    }
+
+    .header {
+        &__inner {
+            padding-top: 40px;
+            padding-bottom: 24px;
+            gap: 16px;
+            background: none;
+        }
+
+        &__logo {
+            font-size: 20px;
+        }
+
+        &__search-wrap {
+            flex: 0 0 auto;
+            margin-left: auto;
+        }
+
+        &__search,
+        &__text {
+            display: none;
+        }
+
+        &__icon {
+            display: block;
+        }
+
+        &__nav {
+            gap: 16px;
+        }
+    }
+
+    .top {
+        &--home {
+            min-height: 735px;
+            background-size: 230% 158%;
+            background-position: 29% 20%;
+        }
+
+        &--page {
+            min-height: 370px;
+            background-size: 230% 158%;
+            background-position: 29% 20%;
+        }
+
+        // Индивидуальное кадрирование фона для телефонов
+        &--catalog {
+            background-size: 330% 158%;
+            background-position: 30% 50%;
+        }
+
+        &--cart {
+            background-size: 345% 130%;
+            background-position: 72% 35%;
+        }
+
+        &__content--page {
+            padding-top: 74px;
+        }
+
+        &__content {
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        &__title {
+            font-size: clamp(30px, 12.5vw, 48px);
+            line-height: 1.2;
+        }
+
+        &__text {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+
+        &__link {
+            font-size: 14px;
+        }
+    }
+
+    .categories__title,
+    .offers__title,
+    .catalog__title {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+
+    .categories {
+        padding-top: 40px;
+    }
+
+    .offers,
+    .catalog {
+        padding: 40px 0;
+    }
+
+    .categories__list {
+        gap: 20px;
+    }
+
+    .categories__item {
+        grid-column: span 12;
+    }
+
+    .category-card {
+        height: 333px;
+
+        &__title {
+            font-size: 20px;
+        }
+    }
+
+    .categories__item--wide {
+        height: 214px;
+    }
+
+    .offers__list,
+    .catalog__list {
+        gap: 32px;
+    }
+
+    .offers__item,
+    .catalog__item {
+        width: 100%;
+    }
+
+    .product {
+        &__image {
+            height: 220px;
+        }
+
+        &__title,
+        &__price,
+        &__old-price {
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        &__price {
+            margin-right: 20px;
+        }
+    }
+
+    .product--compact .product__icons {
+        display: none;
+    }
+
+    .catalog {
+        &__toolbar {
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        &__controls {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        &__sort {
+            width: 203px;
+        }
+    }
+
+    .filter {
+        display: block;
+        width: 100%;
+
+        &__button {
+            width: 203px;
+        }
+
+        &__form {
+            position: static;
+            width: 100%;
+            margin-top: 14px;
+            padding: 24px 20px;
+        }
+
+        &__columns {
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        &__actions {
+            justify-content: center;
+        }
+    }
+
+    .cart {
+        padding-top: 48px;
+
+        &__image {
+            display: none;
+        }
+
+        &__item {
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            padding: 20px 0;
+        }
+
+        &__name {
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        &__description {
+            font-size: 12px;
+            line-height: 15px;
+        }
+
+        &__actions {
+            flex-wrap: nowrap;
+            margin-top: 24px;
+
+        }
+    }
+
+    .cart__button {
+        flex: 1;
+        padding: 0 8px;
+        font-size: 12px;
+    }
+
+    .order {
+        max-width: none;
+        padding: 32px 20px;
+    }
+
+    .footer {
+        &__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 20px;
+            padding-top: 36px;
+            padding-bottom: 36px;
+        }
+
+        &__form {
+            grid-column: 1 / -1;
+            width: 77%;
+            margin: 20px auto 0;
+            text-align: center;
+        }
+    }
+}

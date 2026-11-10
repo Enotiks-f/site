@@ -1,0 +1,12 @@
+// Порядок подключения = порядок стилей в итоговом css/style.css
+@use 'base';
+@use 'header';
+@use 'top';
+@use 'categories';
+@use 'products';
+@use 'catalog';
+@use 'cart';
+@use 'button';
+@use 'filter';
+@use 'footer';
+@use 'mobile';

@@ -1,0 +1,66 @@
+@use 'variables' as *;
+
+.top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &--home {
+        min-height: 735px;
+        background: $color-gray-light url(../img/backgroundMain.jpg) center / cover no-repeat;
+    }
+
+    &--page {
+        min-height: 400px;
+    }
+
+    &--cart {
+        background: url(../img/hero-cart.jpg) center / cover no-repeat, linear-gradient(135deg, #4a4745, #1c1b1a);
+    }
+
+    &--catalog {
+        background: url(../img/hero-catalog.jpg) center / cover no-repeat, linear-gradient(135deg, #6b4f45, #25211f);
+    }
+
+    &__content {
+        padding-top: 63px;
+        padding-bottom: 64px;
+
+        &--page {
+            padding-top: 130px;
+        }
+    }
+
+    &__title {
+        color: $color-white;
+        font-style: normal;
+        font-size: 64px;
+        font-weight: 600;
+        line-height: 70px;
+        max-width: 792px;
+        margin-bottom: 16px;
+    }
+
+    &__text {
+        color: $color-white;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 400;
+        margin-bottom: 24px;
+    }
+
+    &__link {
+        display: inline-block;
+        color: $color-white;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration: underline;
+        transition: color $transition-time;
+
+        &:hover {
+            color: $color-gray-light;
+            text-decoration: none;
+        }
+    }
+}
